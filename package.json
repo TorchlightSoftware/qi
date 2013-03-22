@@ -1,0 +1,29 @@
+{
+  "name":"qi",
+  "description":"Wait to call the final callback until all subtasks have returned.",
+  "version":"0.0.3",
+  "homepage":"http://github.com/TorchlightSoftware/qi",
+  "repository":"git://github.com/TorchlightSoftware/qi.git",
+  "author":"Torchlight Software <info@torchlightsoftware.com> (http://torchlightsoftware.com)",
+  "main":"./index.js",
+
+  "dependencies":{
+    "coffee-script":"*"
+  },
+  "devDependencies":{
+    "mocha":"*",
+    "should":"*"
+  },
+  "engines":{
+    "node":">= 0.8.4"
+  },
+  "licenses":[
+    {
+      "type":"MIT",
+      "url":"http://github.com/torchlightsoftware/qi/raw/master/LICENSE"
+    }
+  ],
+  "scripts": {
+    "test":"mocha"
+  }
+}
