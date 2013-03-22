@@ -2,13 +2,13 @@ should = require 'should'
 {disperse} = require '..'
 
 describe 'disperse', ->
-  it 'should call all subtasks', ->
+  it 'should call all callbacks', ->
 
     yin = (input) ->
       input.should.eql 1
 
-    yong = (input) ->
+    yang = (input) ->
       input.should.eql 1
 
-    taichi = disperse yin, yong
-    taichi 1
+    taiji = disperse yin, yang
+    taiji 1

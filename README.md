@@ -2,7 +2,7 @@
 
 A simple DSL for parallel and sequential processing.
 
-It is simpler and smaller than any other flow control library you will find, and the features are very powerful.
+It is simpler and smaller than any other flow control library you will find, and the features are so powerful, it's probably a monad.
 
 It supports three operations:
 
@@ -52,9 +52,54 @@ describe 'focus', ->
 
 This creates a function which when called will pass its args on to multiple child functions.
 
+### Example
+
+```coffee-script
+should = require 'should'
+{disperse} = require 'qi'
+
+describe 'disperse', ->
+  it 'should call all callbacks', ->
+
+    yin = (input) ->
+      input.should.eql 1
+
+    yang = (input) ->
+      input.should.eql 1
+
+    taiji = disperse yin, yang
+    taiji 1
+```
+
 ## Channel
 
 This executes any number of tasks in sequence.
+
+### Example
+
+```coffee-script
+should = require 'should'
+{channel} = require 'qi'
+
+describe 'channel', ->
+  it 'should call multiple functions', (done) ->
+
+    wuwei = (arg, next) ->
+      next null, arg * 4
+
+    fn2 = (arg, next) ->
+      next null, arg + 2
+
+    final = (err, arg) ->
+      should.not.exist err
+      should.exist arg
+      arg.should.eql 42
+      done()
+
+    sequence = channel(fn1, fn2)
+    sequence 10, final
+
+```
 
 ## LICENSE
 
