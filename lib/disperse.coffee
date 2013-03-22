@@ -1,3 +1,3 @@
-module.exports = (fns...) ->
+module.exports = (cbs...) ->
   (args...) ->
-    fn args... for fn in fns
+    cb args... for cb in cbs

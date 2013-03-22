@@ -1,11 +1,11 @@
-module.exports = (fns..., cb) ->
+module.exports = (fns..., done) ->
   index = 0
   callNext = (args...) ->
 
     unless index < fns.length
-      return cb null, args...
+      return done null, args...
 
     fns[index] args..., (err, results...) ->
-      return cb err, results... if err
+      return done err, results... if err
       index++
       callNext results...
