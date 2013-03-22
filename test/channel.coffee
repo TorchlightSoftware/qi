@@ -35,3 +35,38 @@ describe 'channel', ->
 
     sequence = channel(task1, task2)
     sequence 10, final
+
+  it 'should process no args', (done) ->
+
+    task1 = (next) ->
+      next()
+
+    task2 = (args..., next) ->
+      next()
+
+    final = (err, args...) ->
+      should.not.exist err
+      should.exist args
+      args.should.eql []
+      done()
+
+    sequence = channel(task1, task2)
+    sequence final
+
+  it 'should process an error', (done) ->
+
+    task1 = (arg, next) ->
+      next new Error "something's wrong"
+
+    task2 = (args..., next) ->
+      throw new Error 'should not get here'
+      next()
+
+    final = (err, args...) ->
+      should.exist err
+      should.exist args
+      args.should.eql []
+      done()
+
+    sequence = channel(task1, task2)
+    sequence 10, final
