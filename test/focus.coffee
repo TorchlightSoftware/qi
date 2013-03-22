@@ -42,6 +42,24 @@ describe 'focus', ->
     setTimeout doStuff(cb()), 1
     setTimeout doStuff(cb()), 4
 
+  it 'should map an array', (done) ->
+    cb = focus (err, results) ->
+      should.not.exist err
+      results.should.eql [2, 3, 4]
+      done()
+
+    # these could be implimented internally
+    prep = (item) -> [item, cb()]
+    call = (step) ->
+      ([item, cb]) ->
+        step item, cb
+
+    # this would be passed by the lib consumer
+    iterator = (item, cb) ->
+      cb null, item + 1
+
+    [1, 2, 3].map(prep).forEach(call iterator)
+
   it 'should name results', (done) ->
     cb = focus (err, results) ->
       should.not.exist err
