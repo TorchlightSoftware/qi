@@ -98,7 +98,6 @@ describe 'channel', ->
 
     sequence = channel(task1, task2)
     sequence 10, final
-
 ```
 
 ## LICENSE

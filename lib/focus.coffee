@@ -1,7 +1,7 @@
 module.exports = (done) ->
   counter = 0
   error = null
-  results = []
+  results = {}
 
   (ref) ->
     ref or= counter
