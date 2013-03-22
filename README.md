@@ -84,10 +84,10 @@ should = require 'should'
 describe 'channel', ->
   it 'should call multiple functions', (done) ->
 
-    wuwei = (arg, next) ->
+    task1 = (arg, next) ->
       next null, arg * 4
 
-    fn2 = (arg, next) ->
+    task2 = (arg, next) ->
       next null, arg + 2
 
     final = (err, arg) ->
@@ -96,7 +96,7 @@ describe 'channel', ->
       arg.should.eql 42
       done()
 
-    sequence = channel(fn1, fn2)
+    sequence = channel(task1, task2)
     sequence 10, final
 
 ```
