@@ -4,10 +4,10 @@ should = require 'should'
 describe 'channel', ->
   it 'should call multiple functions', (done) ->
 
-    fn1 = (arg, next) ->
+    task1 = (arg, next) ->
       next null, arg * 4
 
-    fn2 = (arg, next) ->
+    task2 = (arg, next) ->
       next null, arg + 2
 
     final = (err, arg) ->
@@ -16,4 +16,22 @@ describe 'channel', ->
       arg.should.eql 42
       done()
 
-    channel(fn1, fn2, final)(10)
+    sequence = channel(task1, task2)
+    sequence 10, final
+
+  it 'should process multiple args', (done) ->
+
+    task1 = (arg, next) ->
+      next null, arg, 'a', 'b', 'c'
+
+    task2 = (args..., next) ->
+      next null, args.concat([1, 2, 3])...
+
+    final = (err, args...) ->
+      should.not.exist err
+      should.exist args
+      args.should.eql [10, 'a', 'b', 'c', 1, 2, 3]
+      done()
+
+    sequence = channel(task1, task2)
+    sequence 10, final
