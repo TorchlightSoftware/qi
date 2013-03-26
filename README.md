@@ -1,5 +1,7 @@
 # Qi
 
+Pronounced '[chee](http://en.wikipedia.org/wiki/Qi)'.
+
 A simple DSL for parallel and sequential processing.
 
 It is simpler and smaller than any other flow control library you will find, and the features are so powerful, it's probably a monad.
