@@ -2,6 +2,8 @@ module.exports = qi =
   focus: require './focus'
   disperse: require './disperse'
   channel: require './channel'
+  store: require './store'
+  each: require './each'
   qigong: (tasks, flow) ->
     (data, done) ->
       final = qi.focus done

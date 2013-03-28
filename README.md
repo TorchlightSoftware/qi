@@ -102,6 +102,10 @@ describe 'channel', ->
     sequence 10, final
 ```
 
+## Store/Each
+
+I'm not sure how useful these are, or whether I'll keep these in the library.  They basically duplicate async.js functionality.  As such, don't rely on them being here in a future version.
+
 ## LICENSE
 
 (MIT License)
