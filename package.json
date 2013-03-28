@@ -1,7 +1,7 @@
 {
   "name":"qi",
-  "description":"Wait to call the final callback until all subtasks have returned.",
-  "version":"0.0.5",
+  "description":"A small DSL for async flow control.",
+  "version":"0.0.6",
   "homepage":"http://github.com/TorchlightSoftware/qi",
   "repository":"git://github.com/TorchlightSoftware/qi.git",
   "author":"Torchlight Software <info@torchlightsoftware.com> (http://torchlightsoftware.com)",
