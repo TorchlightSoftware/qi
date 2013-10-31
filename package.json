@@ -1,16 +1,16 @@
 {
   "name":"qi",
   "description":"A small DSL for async flow control.",
-  "version":"0.0.7",
+  "version":"0.0.8",
   "homepage":"http://github.com/TorchlightSoftware/qi",
   "repository":"git://github.com/TorchlightSoftware/qi.git",
   "author":"Torchlight Software <info@torchlightsoftware.com> (http://torchlightsoftware.com)",
-  "main":"./index.js",
+  "main":"./dist/qi.js",
 
   "dependencies":{
-    "coffee-script":"*"
   },
   "devDependencies":{
+    "coffee-script":"*",
     "mocha":"*",
     "should":"*"
   },

@@ -12,8 +12,16 @@ It supports three operations:
 * focus
 * channel
 
+From these we derive more complex functions for specific use cases:
+
+* map
+* others?
+
+## Installation
+
 ```bash
 npm install qi
+bower install qi
 ```
 
 # High Level Operators
@@ -43,6 +51,7 @@ describe 'map', ->
     map {a: 1, b: 2, c: 3}, squareAsync, (err, results) ->
       results.should.eql {a: 1, b: 4, c: 9}
       done()
+```
 
 # Fundamental Operators
 
