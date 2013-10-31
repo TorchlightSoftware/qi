@@ -11,14 +11,15 @@ module.exports = (done) ->
     called = false
 
     (err, result) ->
-      return if error
-      return if called
+      process.nextTick ->
+        return if error
+        return if called
 
-      called = true
-      if err
-        error = err
-        return done err, results
+        called = true
+        if err
+          error = err
+          return done err, results
 
-      results[ref] = result
-      if --counter is 0
-        done null, results
+        results[ref] = result
+        if --counter is 0
+          done null, results
