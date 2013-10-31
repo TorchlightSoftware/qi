@@ -1,11 +1,17 @@
+isInteger = (n) ->
+  typeof n is 'number' and n % 1 is 0
+
 module.exports = (done) ->
   counter = 0
   error = null
   results = []
 
   (ref) ->
-    if ref and results is []
+
+    # switch to object results if we get a non-integer ref
+    if not isInteger(ref) and results is []
       results = {}
+
     ref or= counter
     counter++
     called = false

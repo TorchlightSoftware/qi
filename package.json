@@ -1,7 +1,7 @@
 {
   "name":"qi",
   "description":"A small DSL for async flow control.",
-  "version":"0.0.6",
+  "version":"0.0.7",
   "homepage":"http://github.com/TorchlightSoftware/qi",
   "repository":"git://github.com/TorchlightSoftware/qi.git",
   "author":"Torchlight Software <info@torchlightsoftware.com> (http://torchlightsoftware.com)",

@@ -16,11 +16,45 @@ It supports three operations:
 npm install qi
 ```
 
+# High Level Operators
+
+These are convenient functions for common use cases.
+
+## Map
+
+Map over arrays or objects, executing an asynchronous function.
+
+### Example
+
+```coffee-script
+should = require 'should'
+{map} = require 'qi'
+
+squareAsync = (n, next) ->
+  next null, n * n
+
+describe 'map', ->
+  it 'should process an array', (done) ->
+    map [1, 2, 3], squareAsync, (err, results) ->
+      results.should.eql [1, 4, 9]
+      done()
+
+  it 'should process an object', (done) ->
+    map {a: 1, b: 2, c: 3}, squareAsync, (err, results) ->
+      results.should.eql {a: 1, b: 4, c: 9}
+      done()
+
+# Fundamental Operators
+
+These are the 3 base operators, from which all others are derived.
+
 ## Focus
 
 Initialize it on a target function and you will get a callback constructor.  You may create as many callbacks as you want and pass them to your subtasks.  The target will be called when the subtasks have completed.
 
 It supports the node convention of (err, data).  If any of your subtasks return results they will be accumulated in an array.  If any return an error, the target will be called immediately with the error, and the results of all further subtasks will be ignored.
+
+You can pass a 'name' to the callback constructor to assign a name to a particular callback.  If you do so, the results will become an object, with keys corresponding to the names you assigned.
 
 ### Example
 
@@ -101,6 +135,12 @@ describe 'channel', ->
     sequence = channel(task1, task2)
     sequence 10, final
 ```
+
+# FAQ
+
+Q: Is focus safe to use on a mixture of synchronous and asynchronous subtasks?
+
+A: Yes.  Subtasks return their results on process.nextTick, so as long as you construct all your callbacks synchronously, your results should not be collected prematurely.
 
 ## LICENSE
 
