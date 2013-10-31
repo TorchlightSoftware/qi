@@ -1,9 +1,11 @@
 module.exports = (done) ->
   counter = 0
   error = null
-  results = {}
+  results = []
 
   (ref) ->
+    if ref and results is []
+      results = {}
     ref or= counter
     counter++
     called = false

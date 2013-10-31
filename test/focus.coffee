@@ -31,6 +31,7 @@ describe 'focus', ->
   it 'should return all results', (done) ->
     cb = focus (err, results) ->
       should.not.exist err
+      results.should.be.an.instanceOf(Array)
       results.should.eql [0, 1]
       done()
 
@@ -45,6 +46,7 @@ describe 'focus', ->
   it 'should map an array', (done) ->
     cb = focus (err, results) ->
       should.not.exist err
+      results.should.be.an.instanceOf(Array)
       results.should.eql [2, 3, 4]
       done()
 
@@ -63,6 +65,7 @@ describe 'focus', ->
   it 'should name results', (done) ->
     cb = focus (err, results) ->
       should.not.exist err
+      results.should.be.an.instanceOf(Object)
       results.first.should.eql 0
       results.second.should.eql 1
       done()
